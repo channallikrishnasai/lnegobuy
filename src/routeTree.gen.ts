@@ -10,33 +10,281 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppRouteImport } from './routes/_app'
+import { Route as AcceptInviteRouteImport } from './routes/accept-invite'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as AppCommunicationsRouteImport } from './routes/_app/communications'
+import { Route as AppDashboardRouteImport } from './routes/_app/dashboard'
+import { Route as AppDirectRouteImport } from './routes/_app/direct'
+import { Route as AppOrdersRouteImport } from './routes/_app/orders'
+import { Route as AppPlansRouteImport } from './routes/_app/plans'
+import { Route as AppSourcingRouteImport } from './routes/_app/sourcing'
+import { Route as AppTeamRouteImport } from './routes/_app/team'
+import { Route as AppTelegramRouteImport } from './routes/_app/telegram'
+import { Route as AuthCallbackRouteImport } from './routes/auth.callback'
+import { Route as AppMissionsIndexRouteImport } from './routes/_app/missions.index'
+import { Route as AppMissionsNewRouteImport } from './routes/_app/missions.new'
+import { Route as AppMissionsIdIndexRouteImport } from './routes/_app/missions.$id.index'
+import { Route as AppMissionsIdCallConsoleVendorIdRouteImport } from './routes/_app/missions.$id.call-console.$vendorId'
+import { Route as AppMissionsIdCallReviewRefRouteImport } from './routes/_app/missions.$id.call-review.$ref'
+import { Route as AppMissionsIdCallVendorIdRouteImport } from './routes/_app/missions.$id.call.$vendorId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppRoute = AppRouteImport.update({
+  id: '/_app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AcceptInviteRoute = AcceptInviteRouteImport.update({
+  id: '/accept-invite',
+  path: '/accept-invite',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppCommunicationsRoute = AppCommunicationsRouteImport.update({
+  id: '/communications',
+  path: '/communications',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDashboardRoute = AppDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDirectRoute = AppDirectRouteImport.update({
+  id: '/direct',
+  path: '/direct',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppOrdersRoute = AppOrdersRouteImport.update({
+  id: '/orders',
+  path: '/orders',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPlansRoute = AppPlansRouteImport.update({
+  id: '/plans',
+  path: '/plans',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSourcingRoute = AppSourcingRouteImport.update({
+  id: '/sourcing',
+  path: '/sourcing',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTeamRoute = AppTeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTelegramRoute = AppTelegramRouteImport.update({
+  id: '/telegram',
+  path: '/telegram',
+  getParentRoute: () => AppRoute,
+} as any)
+const AuthCallbackRoute = AuthCallbackRouteImport.update({
+  id: '/auth/callback',
+  path: '/auth/callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppMissionsIndexRoute = AppMissionsIndexRouteImport.update({
+  id: '/missions/',
+  path: '/missions/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppMissionsNewRoute = AppMissionsNewRouteImport.update({
+  id: '/missions/new',
+  path: '/missions/new',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppMissionsIdIndexRoute = AppMissionsIdIndexRouteImport.update({
+  id: '/missions/$id/',
+  path: '/missions/$id/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppMissionsIdCallConsoleVendorIdRoute =
+  AppMissionsIdCallConsoleVendorIdRouteImport.update({
+    id: '/missions/$id/call-console/$vendorId',
+    path: '/missions/$id/call-console/$vendorId',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppMissionsIdCallReviewRefRoute =
+  AppMissionsIdCallReviewRefRouteImport.update({
+    id: '/missions/$id/call-review/$ref',
+    path: '/missions/$id/call-review/$ref',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppMissionsIdCallVendorIdRoute =
+  AppMissionsIdCallVendorIdRouteImport.update({
+    id: '/missions/$id/call/$vendorId',
+    path: '/missions/$id/call/$vendorId',
+    getParentRoute: () => AppRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/accept-invite': typeof AcceptInviteRoute
+  '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
+  '/register': typeof RegisterRoute
+  '/communications': typeof AppCommunicationsRoute
+  '/dashboard': typeof AppDashboardRoute
+  '/direct': typeof AppDirectRoute
+  '/orders': typeof AppOrdersRoute
+  '/plans': typeof AppPlansRoute
+  '/sourcing': typeof AppSourcingRoute
+  '/team': typeof AppTeamRoute
+  '/telegram': typeof AppTelegramRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/missions/new': typeof AppMissionsNewRoute
+  '/missions/': typeof AppMissionsIndexRoute
+  '/missions/$id/': typeof AppMissionsIdIndexRoute
+  '/missions/$id/call-console/$vendorId': typeof AppMissionsIdCallConsoleVendorIdRoute
+  '/missions/$id/call-review/$ref': typeof AppMissionsIdCallReviewRefRoute
+  '/missions/$id/call/$vendorId': typeof AppMissionsIdCallVendorIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/accept-invite': typeof AcceptInviteRoute
+  '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
+  '/register': typeof RegisterRoute
+  '/communications': typeof AppCommunicationsRoute
+  '/dashboard': typeof AppDashboardRoute
+  '/direct': typeof AppDirectRoute
+  '/orders': typeof AppOrdersRoute
+  '/plans': typeof AppPlansRoute
+  '/sourcing': typeof AppSourcingRoute
+  '/team': typeof AppTeamRoute
+  '/telegram': typeof AppTelegramRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/missions/new': typeof AppMissionsNewRoute
+  '/missions': typeof AppMissionsIndexRoute
+  '/missions/$id': typeof AppMissionsIdIndexRoute
+  '/missions/$id/call-console/$vendorId': typeof AppMissionsIdCallConsoleVendorIdRoute
+  '/missions/$id/call-review/$ref': typeof AppMissionsIdCallReviewRefRoute
+  '/missions/$id/call/$vendorId': typeof AppMissionsIdCallVendorIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_app': typeof AppRouteWithChildren
+  '/accept-invite': typeof AcceptInviteRoute
+  '/login': typeof LoginRoute
+  '/pricing': typeof PricingRoute
+  '/register': typeof RegisterRoute
+  '/_app/communications': typeof AppCommunicationsRoute
+  '/_app/dashboard': typeof AppDashboardRoute
+  '/_app/direct': typeof AppDirectRoute
+  '/_app/orders': typeof AppOrdersRoute
+  '/_app/plans': typeof AppPlansRoute
+  '/_app/sourcing': typeof AppSourcingRoute
+  '/_app/team': typeof AppTeamRoute
+  '/_app/telegram': typeof AppTelegramRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/_app/missions/new': typeof AppMissionsNewRoute
+  '/_app/missions/': typeof AppMissionsIndexRoute
+  '/_app/missions/$id/': typeof AppMissionsIdIndexRoute
+  '/_app/missions/$id/call-console/$vendorId': typeof AppMissionsIdCallConsoleVendorIdRoute
+  '/_app/missions/$id/call-review/$ref': typeof AppMissionsIdCallReviewRefRoute
+  '/_app/missions/$id/call/$vendorId': typeof AppMissionsIdCallVendorIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/accept-invite'
+    | '/login'
+    | '/pricing'
+    | '/register'
+    | '/communications'
+    | '/dashboard'
+    | '/direct'
+    | '/orders'
+    | '/plans'
+    | '/sourcing'
+    | '/team'
+    | '/telegram'
+    | '/auth/callback'
+    | '/missions/new'
+    | '/missions/'
+    | '/missions/$id/'
+    | '/missions/$id/call-console/$vendorId'
+    | '/missions/$id/call-review/$ref'
+    | '/missions/$id/call/$vendorId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/accept-invite'
+    | '/login'
+    | '/pricing'
+    | '/register'
+    | '/communications'
+    | '/dashboard'
+    | '/direct'
+    | '/orders'
+    | '/plans'
+    | '/sourcing'
+    | '/team'
+    | '/telegram'
+    | '/auth/callback'
+    | '/missions/new'
+    | '/missions'
+    | '/missions/$id'
+    | '/missions/$id/call-console/$vendorId'
+    | '/missions/$id/call-review/$ref'
+    | '/missions/$id/call/$vendorId'
+  id:
+    | '__root__'
+    | '/'
+    | '/_app'
+    | '/accept-invite'
+    | '/login'
+    | '/pricing'
+    | '/register'
+    | '/_app/communications'
+    | '/_app/dashboard'
+    | '/_app/direct'
+    | '/_app/orders'
+    | '/_app/plans'
+    | '/_app/sourcing'
+    | '/_app/team'
+    | '/_app/telegram'
+    | '/auth/callback'
+    | '/_app/missions/new'
+    | '/_app/missions/'
+    | '/_app/missions/$id/'
+    | '/_app/missions/$id/call-console/$vendorId'
+    | '/_app/missions/$id/call-review/$ref'
+    | '/_app/missions/$id/call/$vendorId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
+  AcceptInviteRoute: typeof AcceptInviteRoute
+  LoginRoute: typeof LoginRoute
+  PricingRoute: typeof PricingRoute
+  RegisterRoute: typeof RegisterRoute
+  AuthCallbackRoute: typeof AuthCallbackRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +296,193 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app': {
+      id: '/_app'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accept-invite': {
+      id: '/accept-invite'
+      path: '/accept-invite'
+      fullPath: '/accept-invite'
+      preLoaderRoute: typeof AcceptInviteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app/communications': {
+      id: '/_app/communications'
+      path: '/communications'
+      fullPath: '/communications'
+      preLoaderRoute: typeof AppCommunicationsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/dashboard': {
+      id: '/_app/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AppDashboardRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/direct': {
+      id: '/_app/direct'
+      path: '/direct'
+      fullPath: '/direct'
+      preLoaderRoute: typeof AppDirectRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/orders': {
+      id: '/_app/orders'
+      path: '/orders'
+      fullPath: '/orders'
+      preLoaderRoute: typeof AppOrdersRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/plans': {
+      id: '/_app/plans'
+      path: '/plans'
+      fullPath: '/plans'
+      preLoaderRoute: typeof AppPlansRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/sourcing': {
+      id: '/_app/sourcing'
+      path: '/sourcing'
+      fullPath: '/sourcing'
+      preLoaderRoute: typeof AppSourcingRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/team': {
+      id: '/_app/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof AppTeamRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/telegram': {
+      id: '/_app/telegram'
+      path: '/telegram'
+      fullPath: '/telegram'
+      preLoaderRoute: typeof AppTelegramRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/auth/callback': {
+      id: '/auth/callback'
+      path: '/auth/callback'
+      fullPath: '/auth/callback'
+      preLoaderRoute: typeof AuthCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app/missions/': {
+      id: '/_app/missions/'
+      path: '/missions'
+      fullPath: '/missions/'
+      preLoaderRoute: typeof AppMissionsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/missions/new': {
+      id: '/_app/missions/new'
+      path: '/missions/new'
+      fullPath: '/missions/new'
+      preLoaderRoute: typeof AppMissionsNewRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/missions/$id/': {
+      id: '/_app/missions/$id/'
+      path: '/missions/$id'
+      fullPath: '/missions/$id/'
+      preLoaderRoute: typeof AppMissionsIdIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/missions/$id/call-console/$vendorId': {
+      id: '/_app/missions/$id/call-console/$vendorId'
+      path: '/missions/$id/call-console/$vendorId'
+      fullPath: '/missions/$id/call-console/$vendorId'
+      preLoaderRoute: typeof AppMissionsIdCallConsoleVendorIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/missions/$id/call-review/$ref': {
+      id: '/_app/missions/$id/call-review/$ref'
+      path: '/missions/$id/call-review/$ref'
+      fullPath: '/missions/$id/call-review/$ref'
+      preLoaderRoute: typeof AppMissionsIdCallReviewRefRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/missions/$id/call/$vendorId': {
+      id: '/_app/missions/$id/call/$vendorId'
+      path: '/missions/$id/call/$vendorId'
+      fullPath: '/missions/$id/call/$vendorId'
+      preLoaderRoute: typeof AppMissionsIdCallVendorIdRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppCommunicationsRoute: typeof AppCommunicationsRoute
+  AppDashboardRoute: typeof AppDashboardRoute
+  AppDirectRoute: typeof AppDirectRoute
+  AppOrdersRoute: typeof AppOrdersRoute
+  AppPlansRoute: typeof AppPlansRoute
+  AppSourcingRoute: typeof AppSourcingRoute
+  AppTeamRoute: typeof AppTeamRoute
+  AppTelegramRoute: typeof AppTelegramRoute
+  AppMissionsNewRoute: typeof AppMissionsNewRoute
+  AppMissionsIndexRoute: typeof AppMissionsIndexRoute
+  AppMissionsIdIndexRoute: typeof AppMissionsIdIndexRoute
+  AppMissionsIdCallConsoleVendorIdRoute: typeof AppMissionsIdCallConsoleVendorIdRoute
+  AppMissionsIdCallReviewRefRoute: typeof AppMissionsIdCallReviewRefRoute
+  AppMissionsIdCallVendorIdRoute: typeof AppMissionsIdCallVendorIdRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppCommunicationsRoute: AppCommunicationsRoute,
+  AppDashboardRoute: AppDashboardRoute,
+  AppDirectRoute: AppDirectRoute,
+  AppOrdersRoute: AppOrdersRoute,
+  AppPlansRoute: AppPlansRoute,
+  AppSourcingRoute: AppSourcingRoute,
+  AppTeamRoute: AppTeamRoute,
+  AppTelegramRoute: AppTelegramRoute,
+  AppMissionsNewRoute: AppMissionsNewRoute,
+  AppMissionsIndexRoute: AppMissionsIndexRoute,
+  AppMissionsIdIndexRoute: AppMissionsIdIndexRoute,
+  AppMissionsIdCallConsoleVendorIdRoute: AppMissionsIdCallConsoleVendorIdRoute,
+  AppMissionsIdCallReviewRefRoute: AppMissionsIdCallReviewRefRoute,
+  AppMissionsIdCallVendorIdRoute: AppMissionsIdCallVendorIdRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
+  AcceptInviteRoute: AcceptInviteRoute,
+  LoginRoute: LoginRoute,
+  PricingRoute: PricingRoute,
+  RegisterRoute: RegisterRoute,
+  AuthCallbackRoute: AuthCallbackRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
