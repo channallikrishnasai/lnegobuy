@@ -50,8 +50,8 @@ export function useNavigate() {
     navigate({
       to: pathname,
       search: search ? Object.fromEntries(new URLSearchParams(search)) : undefined,
-      replace: options.replace,
-      state: options.state,
+      replace: options['replace'],
+      state: options['state'],
     } as never);
   };
 }
