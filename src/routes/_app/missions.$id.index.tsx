@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Page from "@/pages/MissionDetail";
 
-export const Route = createFileRoute("/_app/missions/$id")({
+export const Route = createFileRoute("/_app/missions/$id/")({
   head: () => ({
     meta: [
       { title: "Mission detail — NegoBuy" },
