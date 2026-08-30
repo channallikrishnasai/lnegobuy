@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { PhoneCall, Clock, Mic, FileText, ChevronRight } from "lucide-react";
 import api from "../lib/api";
 import { Card, SectionLabel, Badge, Spinner } from "./ui";

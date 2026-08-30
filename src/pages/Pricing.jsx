@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { motion } from "framer-motion";
 import { Check, ArrowLeft, Sparkles, Info, Download, CheckCircle2, X } from "lucide-react";
 import { toast } from "sonner";

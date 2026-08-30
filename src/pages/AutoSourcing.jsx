@@ -3,7 +3,7 @@ import {
   Search, Send, Loader2, CheckCircle2, XCircle, Phone, MapPin, Bot, User,
   Sparkles, TrendingDown, AlertCircle, ArrowLeft,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import api, { formatApiError } from "../lib/api";
 import {
   Button, Input, Textarea, Card, SectionLabel, Spinner, Badge, motion, fadeUp,

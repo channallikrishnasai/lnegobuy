@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Outlet, useNavigate, Link } from "react-router-dom";
+import { NavLink, Outlet, useNavigate, Link } from "@/lib/router-compat";
 import {
   LayoutDashboard,
   CreditCard,

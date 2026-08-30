@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "@/lib/router-compat";
 import { motion } from "framer-motion";
 import { Sparkles, ArrowRight, Wand2, HelpCircle, AlertTriangle } from "lucide-react";
 import { toast } from "sonner";

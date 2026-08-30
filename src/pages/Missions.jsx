@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { Plus, Target, ArrowRight, Search } from "lucide-react";
 import api from "../lib/api";
 import { Button, Card, StatusPill, Spinner, Input } from "../components/ui";

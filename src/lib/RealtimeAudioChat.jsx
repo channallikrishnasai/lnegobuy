@@ -1,5 +1,5 @@
 // OpenAI Realtime voice over WebRTC, proxied through the NegoBuy backend.
-const BASE = process.env.REACT_APP_BACKEND_URL;
+const BASE = import.meta.env.VITE_BACKEND_URL;
 const PREFIX = `${BASE}/api/voice`;
 
 export default class RealtimeAudioChat {

@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, Suspense, Component } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/lib/router-compat";
 import { Canvas } from "@react-three/fiber";
 import { useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import { SkipForward } from "lucide-react";

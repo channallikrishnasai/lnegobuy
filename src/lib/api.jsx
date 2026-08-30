@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE = process.env.REACT_APP_BACKEND_URL;
+const BASE = import.meta.env.VITE_BACKEND_URL;
 const TOKEN_KEY = "negobuy_token";
 
 export function setToken(token) {
