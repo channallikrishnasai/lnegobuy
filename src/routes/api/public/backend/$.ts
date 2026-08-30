@@ -41,8 +41,8 @@ async function proxy({
   headers.set('referer', `${UPSTREAM}/`)
 
   const method = request.method
-  const body =
-    method === 'GET' || method === 'HEAD' ? undefined : await request.arrayBuffer()
+  const body: BodyInit | null =
+    method === 'GET' || method === 'HEAD' ? null : await request.arrayBuffer()
 
   let upstreamResponse: Response
   try {

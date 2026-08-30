@@ -27,6 +27,7 @@ import { Route as AuthCallbackRouteImport } from './routes/auth.callback'
 import { Route as AppMissionsIndexRouteImport } from './routes/_app/missions.index'
 import { Route as AppMissionsNewRouteImport } from './routes/_app/missions.new'
 import { Route as AppMissionsIdIndexRouteImport } from './routes/_app/missions.$id.index'
+import { Route as ApiPublicBackendSplatRouteImport } from './routes/api/public/backend/$'
 import { Route as AppMissionsIdCallConsoleVendorIdRouteImport } from './routes/_app/missions.$id.call-console.$vendorId'
 import { Route as AppMissionsIdCallReviewRefRouteImport } from './routes/_app/missions.$id.call-review.$ref'
 import { Route as AppMissionsIdCallVendorIdRouteImport } from './routes/_app/missions.$id.call.$vendorId'
@@ -120,6 +121,11 @@ const AppMissionsIdIndexRoute = AppMissionsIdIndexRouteImport.update({
   path: '/missions/$id/',
   getParentRoute: () => AppRoute,
 } as any)
+const ApiPublicBackendSplatRoute = ApiPublicBackendSplatRouteImport.update({
+  id: '/api/public/backend/$',
+  path: '/api/public/backend/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppMissionsIdCallConsoleVendorIdRoute =
   AppMissionsIdCallConsoleVendorIdRouteImport.update({
     id: '/missions/$id/call-console/$vendorId',
@@ -156,6 +162,7 @@ export interface FileRoutesByFullPath {
   '/auth/callback': typeof AuthCallbackRoute
   '/missions/new': typeof AppMissionsNewRoute
   '/missions/': typeof AppMissionsIndexRoute
+  '/api/public/backend/$': typeof ApiPublicBackendSplatRoute
   '/missions/$id/': typeof AppMissionsIdIndexRoute
   '/missions/$id/call-console/$vendorId': typeof AppMissionsIdCallConsoleVendorIdRoute
   '/missions/$id/call-review/$ref': typeof AppMissionsIdCallReviewRefRoute
@@ -178,6 +185,7 @@ export interface FileRoutesByTo {
   '/auth/callback': typeof AuthCallbackRoute
   '/missions/new': typeof AppMissionsNewRoute
   '/missions': typeof AppMissionsIndexRoute
+  '/api/public/backend/$': typeof ApiPublicBackendSplatRoute
   '/missions/$id': typeof AppMissionsIdIndexRoute
   '/missions/$id/call-console/$vendorId': typeof AppMissionsIdCallConsoleVendorIdRoute
   '/missions/$id/call-review/$ref': typeof AppMissionsIdCallReviewRefRoute
@@ -202,6 +210,7 @@ export interface FileRoutesById {
   '/auth/callback': typeof AuthCallbackRoute
   '/_app/missions/new': typeof AppMissionsNewRoute
   '/_app/missions/': typeof AppMissionsIndexRoute
+  '/api/public/backend/$': typeof ApiPublicBackendSplatRoute
   '/_app/missions/$id/': typeof AppMissionsIdIndexRoute
   '/_app/missions/$id/call-console/$vendorId': typeof AppMissionsIdCallConsoleVendorIdRoute
   '/_app/missions/$id/call-review/$ref': typeof AppMissionsIdCallReviewRefRoute
@@ -226,6 +235,7 @@ export interface FileRouteTypes {
     | '/auth/callback'
     | '/missions/new'
     | '/missions/'
+    | '/api/public/backend/$'
     | '/missions/$id/'
     | '/missions/$id/call-console/$vendorId'
     | '/missions/$id/call-review/$ref'
@@ -248,6 +258,7 @@ export interface FileRouteTypes {
     | '/auth/callback'
     | '/missions/new'
     | '/missions'
+    | '/api/public/backend/$'
     | '/missions/$id'
     | '/missions/$id/call-console/$vendorId'
     | '/missions/$id/call-review/$ref'
@@ -271,6 +282,7 @@ export interface FileRouteTypes {
     | '/auth/callback'
     | '/_app/missions/new'
     | '/_app/missions/'
+    | '/api/public/backend/$'
     | '/_app/missions/$id/'
     | '/_app/missions/$id/call-console/$vendorId'
     | '/_app/missions/$id/call-review/$ref'
@@ -285,6 +297,7 @@ export interface RootRouteChildren {
   PricingRoute: typeof PricingRoute
   RegisterRoute: typeof RegisterRoute
   AuthCallbackRoute: typeof AuthCallbackRoute
+  ApiPublicBackendSplatRoute: typeof ApiPublicBackendSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -415,6 +428,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppMissionsIdIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/api/public/backend/$': {
+      id: '/api/public/backend/$'
+      path: '/api/public/backend/$'
+      fullPath: '/api/public/backend/$'
+      preLoaderRoute: typeof ApiPublicBackendSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_app/missions/$id/call-console/$vendorId': {
       id: '/_app/missions/$id/call-console/$vendorId'
       path: '/missions/$id/call-console/$vendorId'
@@ -483,6 +503,7 @@ const rootRouteChildren: RootRouteChildren = {
   PricingRoute: PricingRoute,
   RegisterRoute: RegisterRoute,
   AuthCallbackRoute: AuthCallbackRoute,
+  ApiPublicBackendSplatRoute: ApiPublicBackendSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
