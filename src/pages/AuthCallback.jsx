@@ -25,20 +25,33 @@ export default function AuthCallback() {
     if (processedSessions.has(sid)) return;
     processedSessions.add(sid);
     googleSession(sid)
-      .then(() => navigate("/dashboard", { replace: true }))
+      .then(() => {
+        // Drop the single-use session_id from the URL so a refresh does not re-exchange it.
+        window.history.replaceState(null, "", "/dashboard");
+        navigate("/dashboard", { replace: true });
+      })
       .catch((err) => {
         processedSessions.delete(sid);
+        const status = err?.response?.status;
         const detail = err?.response?.data?.detail;
-        // Developer diagnostics (no secrets) — visible in the browser console / network tab.
-        console.error("[google-auth] session exchange failed:", {
-          status: err?.response?.status,
-          detail,
-        });
-        const expired = typeof detail === "string" && detail.startsWith("SESSION_INVALID_OR_EXPIRED");
-        setError(expired
-          ? "That sign-in link expired. Redirecting you to sign in again…"
-          : "Google sign-in failed. Redirecting…");
-        setTimeout(() => navigate("/login"), 1800);
+        // Safe diagnostics: status + upstream detail only. Never the session id or tokens.
+        console.error("[google-auth] session exchange failed", { status, detail });
+        let message;
+        if (!err?.response) {
+          message = "Could not reach the sign-in service. Check your connection and try again.";
+        } else if (status === 502) {
+          message = "The authentication service is temporarily unavailable. Please try again.";
+        } else if (status === 401 || status === 403) {
+          message = "That Google sign-in link expired or was already used. Redirecting you to sign in again…";
+        } else if (status >= 500) {
+          message = "The server could not complete Google sign-in. Please try again shortly.";
+        } else {
+          message = typeof detail === "string" && detail
+            ? `Google sign-in failed: ${detail}`
+            : "Google sign-in failed. Redirecting…";
+        }
+        setError(message);
+        setTimeout(() => navigate("/login"), 2200);
       });
     // eslint-disable-next-line
   }, []);

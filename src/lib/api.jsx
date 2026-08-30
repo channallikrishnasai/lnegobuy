@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const BASE = (import.meta.env.VITE_BACKEND_URL || "https://ai-voice-negotiation.emergent.host");
+// The upstream API does not allow this app's origin in its CORS policy, so all
+// browser traffic goes through our same-origin server proxy (src/routes/api/public/backend/$.ts).
+// VITE_BACKEND_URL still forces a direct base URL when an operator needs it.
+const DIRECT = import.meta.env.VITE_BACKEND_URL;
+export const API_BASE = DIRECT ? `${DIRECT}/api` : "/api/public/backend";
 const TOKEN_KEY = "negobuy_token";
 
 export function setToken(token) {
@@ -13,7 +17,7 @@ export function getToken() {
 }
 
 const api = axios.create({
-  baseURL: `${BASE}/api`,
+  baseURL: API_BASE,
   withCredentials: true,
 });
 
